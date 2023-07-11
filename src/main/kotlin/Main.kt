@@ -6,15 +6,16 @@ fun main() {
     val krieger = Krieger("Krieger", 1000)
     val druide = Druide("Druide", 970)
 
-    val helden = listOf(magier, krieger, druide)           //Liste der Helden damit der drake einen Held zufällig angreifen kann
+    val helden = listOf(magier, krieger, druide)            //Liste der Helden damit der drake einen Held zufällig angreifen kann
     var attackeAusgefuehrt = 0                             //zählt wie oft meine Helden schon angegriffen haben
-    var drakeAngriffAusgefuehrt = false                    //überprüft ob der drake nach dem 3. mal einmal angegriffen hat
+    var drakeAngriffAusgefuehrt =
+        false                    //überprüft ob der drake nach dem 3. mal einmal angegriffen hat
 
     println("Willkommen im Spiel!")                        //Willkommensbildschirm
     println("Der Kampf gegen den Boss beginnt.")
 
 
-    while (drake.lebenspunkte > 0 && helden.any {it.leben > 0}) {           // der drake mehr als 0 HP und alle helden mehr als 0 HP haben,
+    while (drake.lebenspunkte > 0 && helden.any { it.leben > 0 }) {           // der drake mehr als 0 HP und alle helden mehr als 0 HP haben,
         println("----------------------------")                             // dann gehts los...
         println("Wählen Sie einen Helden:")                                 // Helden wählen
         println("1: Magier")
@@ -49,25 +50,41 @@ fun main() {
 
 
                     if (attackeAusgefuehrt >= 3 && !drakeAngriffAusgefuehrt) {                  //wenn die Attacke noch nicht 3x ausgeführt wurden ist und drake noch nicht angegriffen hat..
-                        val zufaelligerHeld = helden.filter { it.leben > 0 }.random()           //dann greift der drake an und wählt einen zufälligen Held aus der Liste oben der noch mehr als 0 HP hat
+                        val zufaelligerHeld = helden.filter { it.leben > 0 }
+                            .random()           //dann greift der drake an und wählt einen zufälligen Held aus der Liste oben der noch mehr als 0 HP hat
                         println("----------------------------")
                         println("Gegner ist am zug:")                                           //Gegner greift an
-                        print("3 ")
+                        print("3")
+                        Thread.sleep(100)
+                        print(".")
+                        Thread.sleep(100)
+                        print(". ")
                         Thread.sleep(1000)                                                //kurze Pause 1 sek
-                        print("2 ")
+                        print("2")
+                        Thread.sleep(100)
+                        print(".")
+                        Thread.sleep(100)
+                        print(". ")
                         Thread.sleep(1000)
-                        println("1 ")
+                        print("1")
+                        Thread.sleep(100)
+                        print(".")
+                        Thread.sleep(100)
+                        println(". ")
                         Thread.sleep(1000)
                         drake.angreifen(zufaelligerHeld)                                        //drake greift zufälligen Held an
-                        drakeAngriffAusgefuehrt = true                                          //angriff vom drake wird auf true gesetzt
+                        drakeAngriffAusgefuehrt =
+                            true                                          //angriff vom drake wird auf true gesetzt
 
                     }
                     if (attackeAusgefuehrt < 3) {                                               //wenn die attacke weniger als 3 ist..
                         println("Angriff ${attackeAusgefuehrt} von 3")                          //angriff x von 3 wird angezeit
 
                     } else {
-                        attackeAusgefuehrt = 0                                                  //andererseits wiederholen
-                        drakeAngriffAusgefuehrt = false                                         //wenn drake noch nicht auf true (nach dem 3. angriff) dann ist immernoch false
+                        attackeAusgefuehrt =
+                            0                                                  //andererseits wiederholen
+                        drakeAngriffAusgefuehrt =
+                            false                                         //wenn drake noch nicht auf true (nach dem 3. angriff) dann ist immernoch false
                     }
                 }
 

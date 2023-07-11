@@ -13,7 +13,7 @@ class Magier(name: String, leben: Int) : Held(name, leben) {                //er
         println("4: Sternenschauer")
         println("----------------------------")
 
-        val eingabe = readln()?.toIntOrNull()                                       //eingabe vom User
+        val eingabe = readln()?.toIntOrNull()                                                     //eingabe vom User
 
         when (eingabe) {
             1 -> {
