@@ -45,6 +45,7 @@ class Druide(name: String, leben: Int) : Held(name, leben) {
     }
 
     override fun beutel(held: Held) {
+        beutelGezogen = true
         println("----------------------------")
         println("Wähle aus:")
         println("1: Heilung")

@@ -2,7 +2,7 @@ import kotlin.random.Random
 
 class Magier(name: String, leben: Int) : Held(name, leben) {                //erbt vom Held
 
-    var heilungVerwendet = 0                                                //Zählt ob der Held schon Heilung benutzt hat
+
 
     override fun angreifen(boss: Boss) {                                    //Angriff auswählen
         println("----------------------------")
@@ -16,9 +16,9 @@ class Magier(name: String, leben: Int) : Held(name, leben) {                //er
         val eingabe = readln()?.toIntOrNull()                                                     //eingabe vom User
 
         when (eingabe) {
-            1 -> {
-                val schaden = Random.nextInt(200, 350)                                  // wenn 1 gewählt wird macht er zfälligen schaden zwischen 200 und 350
-                println("${name} benutzt Froststrahl und verursacht ${schaden} Schaden")          // habe extra Random.nextInt gewählt (statt (300<..<380).random()) weil ich es übersichtlicher finde
+            1 -> {                                                                                 // wenn 1 gewählt wird macht er zfälligen schaden zwischen 200 und 350
+                val schaden = Random.nextInt(200, 350)                                  // habe extra Random.nextInt gewählt (statt (200<..<350).random()) weil ich es übersichtlicher finde
+                println("${name} benutzt Froststrahl und verursacht ${schaden} Schaden")
                 boss.schaden(schaden)                                                             // schaden wird am drake(Boss) abgezogen
             }
 
@@ -41,13 +41,14 @@ class Magier(name: String, leben: Int) : Held(name, leben) {                //er
             }
 
             else -> {
-                println("Ungültige Eingabe")                                          //Bei falsche eingabe wird folgender Text ausgegeben
+                println("Ungültige Eingabe")                                    //Bei falsche eingabe wird folgender Text ausgegeben
             }
         }
 
     }
 
-    override fun beutel(held: Held) {                                           //Beutel vom Held
+    override fun beutel(held: Held) {
+        beutelGezogen = true                                                            //Beutel vom Held
         println("----------------------------")
         println("Wähle aus:")                                                   //Auswählen was man möchte
         println("1: Heilung")
@@ -62,6 +63,8 @@ class Magier(name: String, leben: Int) : Held(name, leben) {                //er
                 vitamine(held)
         }
     }
+
+    var heilungVerwendet = 0                                                            //Zählt ob der Held schon Heilung benutzt hat
 
     override fun heilen(held: Held) {
         if (heilungVerwendet < 3) {                                                     //Wenn der Held noch keine 3 Heiltränke benutzt hat, kann es einen benutzen

@@ -2,20 +2,19 @@ fun main() {
     // val kleinerHelferJohn = KleinerHelferJohn("Kleiner Helfer John", 100)
     //  kleinerHelferJohn.attackeSchwaechung(InGame("Spieler", 200))
     val drake = Drake("Drake", 5800)           //Meine Helden
-    val magier = Magier("Magier", 800)
-    val krieger = Krieger("Krieger", 1000)
-    val druide = Druide("Druide", 970)
+    val magier = Magier("Magier", 100)
+    val krieger = Krieger("Krieger", 100)
+    val druide = Druide("Druide", 100)
 
     val helden = listOf(magier, krieger, druide)            //Liste der Helden damit der drake einen Held zufällig angreifen kann
-    var attackeAusgefuehrt = 0                             //zählt wie oft meine Helden schon angegriffen haben
-    var drakeAngriffAusgefuehrt =
-        false                    //überprüft ob der drake nach dem 3. mal einmal angegriffen hat
+    var attackeAusgefuehrt = 0                              //zählt wie oft meine Helden schon angegriffen haben
+    var drakeAngriffAusgefuehrt = false                     //überprüft ob der drake nach dem 3. mal einmal angegriffen hat
 
-    println("Willkommen im Spiel!")                        //Willkommensbildschirm
+    println("Willkommen im Spiel!")                         //Willkommensbildschirm
     println("Der Kampf gegen den Boss beginnt.")
 
 
-    while (drake.lebenspunkte > 0 && helden.any { it.leben > 0 }) {           // der drake mehr als 0 HP und alle helden mehr als 0 HP haben,
+    while (drake.lebenspunkte > 0 && helden.any { it.leben > 0 }) {         // der drake mehr als 0 HP und alle helden mehr als 0 HP haben,
         println("----------------------------")                             // dann gehts los...
         println("Wählen Sie einen Helden:")                                 // Helden wählen
         println("1: Magier")
@@ -24,7 +23,7 @@ fun main() {
         println("----------------------------")
 
 
-        val eingabe = readLine()?.toIntOrNull()                             //eingabe vom User
+        val eingabe = readLine()?.toInt()                             //eingabe vom User
 
         val held = when (eingabe) {                                         //Held wird gewählt
             1 -> magier
@@ -41,7 +40,7 @@ fun main() {
             println("2: Beutel")
             println("----------------------------")
 
-            val aktion = readLine()?.toIntOrNull()                               //eingabe User
+            val aktion = readLine()?.toInt()                               //eingabe User
 
             when (aktion) {
                 1 -> {                                                           //wenn die 1 gedrückt wird, wird angegriffen
@@ -50,7 +49,7 @@ fun main() {
 
 
                     if (attackeAusgefuehrt >= 3 && !drakeAngriffAusgefuehrt) {                  //wenn die Attacke noch nicht 3x ausgeführt wurden ist und drake noch nicht angegriffen hat..
-                        val zufaelligerHeld = helden.filter { it.leben > 0 }
+                        val zufaelligerHeld = helden.filter { it.leben > 0 }                    //hat der Held noch mehr als 0 HP
                             .random()           //dann greift der drake an und wählt einen zufälligen Held aus der Liste oben der noch mehr als 0 HP hat
                         println("----------------------------")
                         println("Gegner ist am zug:")                                           //Gegner greift an
@@ -72,24 +71,26 @@ fun main() {
                         Thread.sleep(100)
                         println(". ")
                         Thread.sleep(1000)
-                        drake.angreifen(zufaelligerHeld)                                        //drake greift zufälligen Held an
-                        drakeAngriffAusgefuehrt =
-                            true                                          //angriff vom drake wird auf true gesetzt
+                        drake.angreifen(zufaelligerHeld, helden)                                        //drake greift zufälligen Held an
+                        drakeAngriffAusgefuehrt = true                                                 //angriff vom drake wird auf true gesetzt
 
                     }
-                    if (attackeAusgefuehrt < 3) {                                               //wenn die attacke weniger als 3 ist..
-                        println("Angriff ${attackeAusgefuehrt} von 3")                          //angriff x von 3 wird angezeit
+                    if (attackeAusgefuehrt < 3) {                                                       //wenn die attacke weniger als 3 ist..
+                        println("Angriff ${attackeAusgefuehrt} von 3")                                 //angriff x von 3 wird angezeit
 
                     } else {
-                        attackeAusgefuehrt =
-                            0                                                  //andererseits wiederholen
-                        drakeAngriffAusgefuehrt =
-                            false                                         //wenn drake noch nicht auf true (nach dem 3. angriff) dann ist immernoch false
+                        attackeAusgefuehrt = 0                                                  //andererseits wiederholen
+                        drakeAngriffAusgefuehrt = false                                         //wenn drake noch nicht auf true (nach dem 3. angriff) dann ist immernoch false
                     }
                 }
 
                 2 -> {
-                    held.beutel(held)                                                           // Nr. 2 für Beutel wählen
+                    if (!held.beutelGezogen){
+                        held.beutel(held)
+                    } else {
+                        println("Bereits gebraucht")
+                    }
+                                                                               // Nr. 2 für Beutel wählen
                 }
 
                 else -> println("Ungültige Eingabe")                                            // Wird was anderes einegegebn wie gefordert, gibt er ungültige eingabe aus
@@ -97,8 +98,6 @@ fun main() {
         } else {
             println("Ungültige Eingabe oder Held tot. Probiere es noch einmal.")                //Wenn falsche eingabe oder held tot dann nochmal ein probieren
         }
-
-        println("---------")
     }
 
     if (drake.lebenspunkte <= 0) {                                                              //Wenn drake wniger als 0 HP ist das spiel vorbei
@@ -107,7 +106,7 @@ fun main() {
         println("Leider haben Sie den Kampf verloren. Der Boss hat noch ${drake.lebenspunkte} Lebenspunkte.")         //Wenn User verloren wird folgender Text ausgegeben
     }
 
-    println("Das Spiel ist beendet.")                                                           //spiele beendet
+    println("Das Spiel ist beendet.")                                                           //spiel beendet
 
 
 }

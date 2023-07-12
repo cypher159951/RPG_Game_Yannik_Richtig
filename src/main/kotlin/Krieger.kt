@@ -1,8 +1,8 @@
 import kotlin.random.Random
 
-class Krieger(name: String, leben: Int) : Held(name, leben) {
+class Krieger(name: String, leben: Int) : Held(name, leben) {                                       //erbt vom Held
 
-    override fun angreifen(boss: Boss) {                                        //Wiederholt sich alles wie beim Magier
+    override fun angreifen(boss: Boss) {                                                            //Angriff auswählen
         println("----------------------------")
         println("Wähle einen Angriff")
         println("1: Schwertschwung")
@@ -12,11 +12,11 @@ class Krieger(name: String, leben: Int) : Held(name, leben) {
         println("----------------------------")
         println()
 
-        val eingabe = readln()?.toIntOrNull()
+        val eingabe = readln()?.toIntOrNull()                                                       //eingabe vom User
 
         when (eingabe) {
             1 -> {
-                val schaden = Random.nextInt(360, 450)
+                val schaden = Random.nextInt(360, 450)                                          // genau wie bei magier
                 println("${name} benutzt Schwertschwung und verursacht ${schaden} Schaden")
                 boss.schaden(schaden)
             }
@@ -46,6 +46,7 @@ class Krieger(name: String, leben: Int) : Held(name, leben) {
     }
 
     override fun beutel(held: Held) {
+        beutelGezogen = true
         println("----------------------------")
         println("Wähle aus:")
         println("1: Heilung")
