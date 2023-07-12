@@ -68,7 +68,7 @@ class Magier(name: String, leben: Int) : Held(name, leben) {                //er
         if (heilungVerwendet < 3) {                                                     //Wenn der Held noch keine 3 Heiltränke benutzt hat, kann es einen benutzen
             val heilung = Random.nextInt(100, 201)                            //Heilt sich zufällig in diesem Bereich
             leben += heilung                                                            //Heilung(Leben) wird zum aktuellen Leben addiert
-            println("${name} heilt sich um ${heilung} Lebenspunkte und hat nun ${leben} Lebenspunkte")      //Test wird ausgegeben mit Infos
+            println("${name} heilt sich um ${heilung} Lebenspunkte und hat nun ${leben} Lebenspunkte")      //Text wird ausgegeben mit Infos
             heilungVerwendet++                                                          //Benutzung des Heiltrank wird gezählt
             println("Sie haben den Heiltrank ${heilungVerwendet} von 3 benutzt")        //Test wird ausgegeben
         } else {
