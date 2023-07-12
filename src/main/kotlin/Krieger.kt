@@ -1,6 +1,6 @@
 import kotlin.random.Random
 
-class Krieger(name: String, leben: Int) : Held(name, leben) {                                       //erbt vom Held
+class Krieger(name: String, leben: Int) : Held(name, leben) {               //erbt vom Held
 
     override fun angreifen(boss: Boss) {                                                            //Angriff auswählen
         println("----------------------------")

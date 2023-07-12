@@ -5,23 +5,28 @@ class Drake(name: String, leben: Int) : Boss(name, leben) {
     val attacken = listOf("gifthieb", "schwerttanz", "durchbruch", "seitlicherHieb", "panzerSchlag", "boeserFluch")      //Hilfe vom Tutor
 
     fun gifthieb(held: Held) {
-        val schaden = Random.nextInt(280, 320)                  //Macht einen zufälligen Schaden in dem Bereich
+        val schaden = Random.nextInt(280, 320)                              //Macht einen zufälligen Schaden in dem Bereich
         println("${name} führt die Attacke Gifthieb aus und macht ${schaden} Schaden an ${held.name}")  //Text mit Infos wird ausgegeben
-        held.schaden(schaden)                                            //Schaden wird vom Leben vom Held abgezogen
-        println("${held.name} hat noch ${held.leben} Leben.")             //Text mit Infos ausgegeben
+        held.schaden(schaden)                                           //hilfe vom tutor
+        if(held.leben >= 1) {
+            println("${held.name} hat noch ${held.leben} Leben.")                                                             //Schaden wird vom Leben vom Held abgezogen
+        } else {
+            println("Der Held ${held.name} ist tot")                    //Text mit Infos ausgegeben
+        }
+
     }
 
     fun schwerttanz(held: Held) {                                         //Wiederholt sich s.o.
         val schaden = Random.nextInt(300, 420)
         println("${name} führt die Attacke Schwerttanz aus und macht ${schaden} Schaden an ${held.name}")
-        held.schaden(schaden)
+        held.schaden(schaden)                                              //hilfe vom tutor
         println("${held.name} hat noch ${held.leben} Leben.")
     }
 
     fun durchbruch(held: Held) {                                          //Wiederholt sich s.o.
         val schaden = Random.nextInt(400, 440)
         println("${name} führt die Attacke Durchbruch aus und macht ${schaden} Schaden an ${held.name}")
-        held.schaden(schaden)
+        held.schaden(schaden)                                              //hilfe vom tutor
         println("${held.name} hat noch ${held.leben} Leben.")
     }
 
@@ -35,7 +40,7 @@ class Drake(name: String, leben: Int) : Boss(name, leben) {
     fun panzerSchlag(held: Held) {                                          //Wiederholt sich s.o.
         val schaden = Random.nextInt(480, 520)
         println("${name} führt die Attacke Durchbruch aus und macht ${schaden} Schaden an ${held.name}")
-        held.schaden(schaden)
+        held.schaden(schaden)                                               //hilfe vom tutor
         println("${held.name} hat noch ${held.leben} Leben.")
     }
 

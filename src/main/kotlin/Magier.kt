@@ -2,8 +2,6 @@ import kotlin.random.Random
 
 class Magier(name: String, leben: Int) : Held(name, leben) {                //erbt vom Held
 
-
-
     override fun angreifen(boss: Boss) {                                    //Angriff auswählen
         println("----------------------------")
         println("Wähle einen Angriff")
@@ -13,17 +11,17 @@ class Magier(name: String, leben: Int) : Held(name, leben) {                //er
         println("4: Sternenschauer")
         println("----------------------------")
 
-        val eingabe = readln()?.toIntOrNull()                                                     //eingabe vom User
+        val eingabe = readln()?.toIntOrNull()                               //eingabe vom User
 
         when (eingabe) {
-            1 -> {                                                                                 // wenn 1 gewählt wird macht er zfälligen schaden zwischen 200 und 350
-                val schaden = Random.nextInt(200, 350)                                  // habe extra Random.nextInt gewählt (statt (200<..<350).random()) weil ich es übersichtlicher finde
+            1 -> {                                                                            // wenn 1 gewählt wird macht er zfälligen schaden zwischen 200 und 350
+                val schaden = Random.nextInt(200, 350)                              // habe extra Random.nextInt gewählt (statt (200<..<350).random()) weil ich es übersichtlicher finde
                 println("${name} benutzt Froststrahl und verursacht ${schaden} Schaden")
-                boss.schaden(schaden)                                                             // schaden wird am drake(Boss) abgezogen
+                boss.schaden(schaden)                                                         // schaden wird am drake(Boss) abgezogen
             }
 
             2 -> {
-                val schaden = Random.nextInt(300, 380)                                  //Das ganze wiederholt sich
+                val schaden = Random.nextInt(300, 380)                              //Das ganze wiederholt sich
                 println("${name} benutzt Eisblitz und verursacht ${schaden} Schaden")
                 boss.schaden(schaden)
             }
@@ -48,7 +46,7 @@ class Magier(name: String, leben: Int) : Held(name, leben) {                //er
     }
 
     override fun beutel(held: Held) {
-        beutelGezogen = true                                                            //Beutel vom Held
+        beutelGezogen = true                                                    //Beutel gezogen wird auf true gesetzt wenn er 1x benutzt wurde
         println("----------------------------")
         println("Wähle aus:")                                                   //Auswählen was man möchte
         println("1: Heilung")
