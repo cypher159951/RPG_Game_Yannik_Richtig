@@ -1,5 +1,5 @@
 
-//Diese Klasse wird nicht benötigt, könnte ich eigentlich löschen habe sie aber vorsichtshalber behalten fals ich
+//Diese Klasse wird nicht benötigt, könnte ich eigentlich löschen habe sie aber vorsichtshalber behalten, falls ich
 //hier doch etwas programmieren möchte
 
 

@@ -12,7 +12,7 @@ fun main() {
     println("Der Kampf gegen den Boss beginnt.")
 
 
-    while (drake.lebenspunkte > 0 && helden.any { it.leben > 0 }) {          // wenn der drake mehr als 0 HP und alle helden mehr als 0 HP haben,
+    while (drake.lebenspunkte > 0 && helden.any { it.leben > 0 }) {         // wenn der drake mehr als 0 HP und alle helden mehr als 0 HP haben,
         println("----------------------------")                             // dann gehts los...
         println("Wählen Sie einen Helden:")                                 // Helden wählen
         println("1: Magier")
