@@ -1,6 +1,6 @@
 fun main() {
     val drake = Drake("Drake", 4400)             //Meine Helden
-    val magier = Magier("Magier", 800)
+    val magier = Magier("Magier", 900)
     val krieger = Krieger("Krieger", 1400)
     val druide = Druide("Druide", 1200)
 

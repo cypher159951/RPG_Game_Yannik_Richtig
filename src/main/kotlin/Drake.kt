@@ -61,12 +61,12 @@ class Drake(name: String, leben: Int) : Boss(name, leben) {
         }
     }
 
-    fun boeserFluch(helden: List<Held>) {
-        for (held in helden) {                                                      //Diese Attacke trifft alle Helden
+    fun boeserFluch(helden: List<Held>) {                                           //Bekommt die Liste aller Helden
+        for (held in helden) {                                                      //schaut ob held in der helden liste ist, Diese Attacke trifft alle Helden
             val schaden = Random.nextInt(320, 420)
             held.schaden(schaden)                                                   //Macht Schaden an allen Helden
-            if (held.leben >= 1) {
-                println("${name} führt die Attacke Böser Fluch aus und macht ${schaden} Schaden an ${held.name}")
+            if (held.leben >= 1) {                                                  //Wenn leben über oder gleich 1 HP ist ..
+                println("${name} führt die Attacke Böser Fluch aus und macht ${schaden} Schaden an ${held.name}")     // gibt er diesen Text aus
             } else {
                 println("Der Held ${held.name} ist tot")                            //wenn unter 0 dann folgender Text
             }
@@ -76,7 +76,7 @@ class Drake(name: String, leben: Int) : Boss(name, leben) {
     override fun angreifen(held: Held, helden: List<Held>) {
         val zufaelligeAttacke = attacken.random()                              //wählt zufällige Attacke oben aus der Liste
         when (zufaelligeAttacke) {                                             //Hilfe vom tutor
-            "gifthieb" -> gifthieb(held)                                       //führt gewählt attacke aus
+            "gifthieb" -> gifthieb(held)                                       //führt gewählte attacke aus
             "schwerttanz" -> schwerttanz(held)
             "durchbruch" -> durchbruch(held)
             "seitlicherHieb" -> seitlicherHieb(held)
