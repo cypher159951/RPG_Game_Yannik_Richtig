@@ -25,3 +25,4 @@ open class InGame(val name: String, var lebenspunkte: Int) {
         println("${name} erleidet ${schaden} Schaden. Es bleiben ${lebenspunkte} Lebenspunkte übrig.")
     }
 }
+

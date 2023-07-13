@@ -91,7 +91,7 @@ fun main() {
                         if (!held.beutelGezogen) {
                             held.beutel(held)                                                       //Held zieht Beutel
                         } else {
-                            println("Bereits gebraucht")
+                            println("Beutel bereits genutzt")
                         }
                     }
 
